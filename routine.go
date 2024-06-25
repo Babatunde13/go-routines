@@ -33,7 +33,6 @@ func getRandomUserInternal (users []User, user chan User) {
 }
 
 func getUserByIdInternal (users []User, id int, user chan User) {
-	fmt.Println(id, id-1, users)
 	user <- users[id-1]
 }
 
@@ -41,8 +40,6 @@ func updateUserInternal (users *[]User, id int, name string, user chan User) {
 	u := (*users)[id-1]
 	u.Name = name
 	(*users)[u.ID-1] = u
-	fmt.Println(u)
-	fmt.Println(*users)
 	user <- u
 }
 
@@ -100,5 +97,5 @@ func main () {
 	fmt.Println(db.getRandonmUser())
 	fmt.Println(db.getUserById(30))
 	db.updateUser(1, "Babalola")
-	// fmt.Println(db.users)
+	fmt.Println(db.users)
 }
